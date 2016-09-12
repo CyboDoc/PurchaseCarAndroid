@@ -9,9 +9,12 @@ import android.widget.TextView;
 import cybodoc.carpurchase.R;
 import cybodoc.garage.Adapter.CarBrandModelsAdapter;
 import cybodoc.garage.Adapter.CarBrandsAdapter;
+import cybodoc.garage.Adapter.CarStylesAdapter;
 import cybodoc.garage.ModelClass.CarBrands;
 import cybodoc.garage.ModelClass.Make;
+import cybodoc.garage.ModelClass.StyleModelRootClass;
 import cybodoc.garage.Utils.Constants;
+import cybodoc.garage.Utils.SharedPreference;
 import cybodoc.garage.Utils.utils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,7 +75,7 @@ public String key= Constants.API_KEY;
     public void ListCarBrandModels(String niceName,final RecyclerView recyclerView, final int resId, final View view) {
         final ProgressDialog progressDialog= utils.showProgressDialog(context);
         progressDialog.show();
-        Call<Make> call = webservice.getCarBrandModels(niceName,"new", "basic", "json", key);
+        Call<Make> call = webservice.getCarBrandModels(niceName, "new", "basic", "json", key);
         call.enqueue(new Callback<Make>() {
             @Override
             public void onResponse(Call<Make> call, Response<Make> response) {
@@ -105,6 +108,47 @@ public String key= Constants.API_KEY;
 
             @Override
             public void onFailure(Call<Make> call, Throwable t) {
+                progressDialog.cancel();
+            }
+        });
+
+    }
+    public void ListCarBrandModelStyles(int year,final RecyclerView recyclerView, final int resId, final View view) {
+        final ProgressDialog progressDialog= utils.showProgressDialog(context);
+        progressDialog.show();
+        Call<StyleModelRootClass> call = webservice.getCarModelStyles(SharedPreference.getMakeNiceName(context),SharedPreference.getModelNiceName(context),year, "json", key);
+        call.enqueue(new Callback<StyleModelRootClass>() {
+            @Override
+            public void onResponse(Call<StyleModelRootClass> call, Response<StyleModelRootClass> response) {
+                if (response.body()==null) {
+                    progressDialog.cancel();
+                    //EventBus.getDefault().postSticky(response.body());
+                    recyclerView.setVisibility(View.INVISIBLE);
+                    TextView emptyView=(TextView)view.findViewById(R.id.empty_view);
+                    emptyView.setVisibility(View.VISIBLE);
+                } else {
+                    if(response.body().stylesCount==0)
+                    {
+                        progressDialog.cancel();
+                        //EventBus.getDefault().postSticky(response.body());
+                        recyclerView.setVisibility(View.INVISIBLE);
+                        TextView emptyView=(TextView)view.findViewById(R.id.empty_view);
+                        emptyView.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        progressDialog.cancel();
+                        TextView emptyView = (TextView) view.findViewById(R.id.empty_view);
+                        emptyView.setVisibility(View.INVISIBLE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        //EventBus.getDefault().postSticky(response.body().getResult());
+                        recyclerView.setAdapter(new CarStylesAdapter(response.body().styles, resId, context));
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<StyleModelRootClass> call, Throwable t) {
                 progressDialog.cancel();
             }
         });

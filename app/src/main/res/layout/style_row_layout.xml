@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    app:cardCornerRadius="@dimen/activity_vertical_margin"
+    app:cardElevation="@dimen/activity_vertical_margin"
+    android:layout_width="match_parent"
+    android:layout_height="300sp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/style_model_name"
+            android:text="Model Name"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/white"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="80sp" />
+        <TextView
+            android:id="@+id/style_name"
+            android:text="Style Name"
+            android:gravity="center"
+            android:layout_below="@id/style_model_name"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/white"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="80sp" />
+        <TextView
+android:layout_below="@id/style_name"
+            android:id="@+id/trim"
+            android:text="Trim"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp" />
+            <TextView
+                android:id="@+id/trim_content"
+                android:layout_below="@id/trim"
+                android:text="TrimContent"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:background="@color/white"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="100sp" />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

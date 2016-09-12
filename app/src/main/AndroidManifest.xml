@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="cybodoc.garage.Activity.CarModelDescriptionActivity"></activity>
+        <activity android:name="cybodoc.garage.Activity.CarModelDescriptionActivity" />
         <activity android:name="cybodoc.garage.Activity.ListCarBrandsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cybodoc.garage.Activity.CarBrandModelsActivity"></activity>
+        <activity android:name="cybodoc.garage.Activity.CarBrandModelsActivity" />
+        <activity android:name="cybodoc.garage.Activity.StylesActivity"></activity>
     </application>
 
 </manifest>

@@ -15,9 +15,9 @@ import android.widget.TextView;
 import java.util.List;
 
 import cybodoc.carpurchase.R;
-import cybodoc.garage.Activity.CarModelDescriptionActivity;
+import cybodoc.garage.Activity.StylesActivity;
 import cybodoc.garage.ModelClass.Model;
-
+import cybodoc.garage.Utils.SharedPreference;
 
 
 public class CarBrandModelsAdapter extends RecyclerView.Adapter<CarBrandModelsAdapter.DetailsViewHolder> {
@@ -44,6 +44,7 @@ public class CarBrandModelsAdapter extends RecyclerView.Adapter<CarBrandModelsAd
     public void onBindViewHolder(DetailsViewHolder holder, final int position) {
         holder.brandName.setText(models.get(position).getId());
 
+
 //        Picasso.with(context)
 //                .load("http://" + events.get(position).getLink())
 //                .placeholder(R.drawable.logo)
@@ -53,9 +54,8 @@ public class CarBrandModelsAdapter extends RecyclerView.Adapter<CarBrandModelsAd
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-
-                Intent intent= new Intent(v.getContext(),CarModelDescriptionActivity.class);
-                intent.putExtra("ModelId", models.get(position).getId());
+                SharedPreference.setModelNiceName(context,models.get(position).getNiceName());
+                Intent intent= new Intent(v.getContext(),StylesActivity.class);
 //                intent.putExtra("NoOfModels",makes.get(position).getModels().size());
 //                intent.putExtra("BrandName",makes.get(position).getName());
                 v.getContext().startActivity(intent);

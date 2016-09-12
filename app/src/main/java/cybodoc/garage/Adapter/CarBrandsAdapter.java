@@ -17,7 +17,7 @@ import java.util.List;
 import cybodoc.carpurchase.R;
 import cybodoc.garage.Activity.CarBrandModelsActivity;
 import cybodoc.garage.ModelClass.Make;
-
+import cybodoc.garage.Utils.SharedPreference;
 
 
 public class CarBrandsAdapter extends RecyclerView.Adapter<CarBrandsAdapter.DetailsViewHolder> {
@@ -53,6 +53,7 @@ public class CarBrandsAdapter extends RecyclerView.Adapter<CarBrandsAdapter.Deta
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreference.setMakeNiceName(context,makes.get(position).getNiceName());
                 Intent intent= new Intent(v.getContext(),CarBrandModelsActivity.class);
                 intent.putExtra("BrandNiceName",makes.get(position).getNiceName());
                 intent.putExtra("NoOfModels",makes.get(position).getModels().size());
