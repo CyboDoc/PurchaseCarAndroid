@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/coordinate_car_brands"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="cybodoc.carpurchase.Activity.ListCarBrandsActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<include layout="@layout/toolbar_layout"></include>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_brands"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        </FrameLayout>
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="23sp"
+            android:textColor="#316887"
+            android:text="Sorry! No results"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
