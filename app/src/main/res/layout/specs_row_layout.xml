@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="365sp"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/activity_vertical_margin"
+    app:cardElevation="@dimen/activity_vertical_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/equipment"
+            android:layout_width="150sp"
+            android:layout_height="45sp"
+            android:gravity="center|left"
+            android:text="Equipment"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/equipment_content"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:layout_toRightOf="@id/equipment"
+            android:gravity="center"
+            android:text="Equipment"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/compression_ratio"
+            android:layout_width="150sp"
+            android:layout_height="45sp"
+            android:layout_below="@+id/equipment"
+            android:gravity="center|left"
+            android:text="Compression Ratio"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/compression_ratio_content"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:layout_below="@+id/equipment"
+            android:layout_toRightOf="@id/compression_ratio"
+            android:gravity="center"
+            android:text="Equipment"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cylinder"
+            android:layout_width="150sp"
+            android:layout_height="45sp"
+            android:layout_below="@+id/compression_ratio"
+            android:gravity="center|left"
+            android:text="Cylinder"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cylinder_content"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:layout_below="@+id/compression_ratio"
+            android:layout_toRightOf="@id/cylinder"
+            android:gravity="center"
+            android:text="Equipment"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fuel_type"
+            android:layout_width="150sp"
+            android:layout_height="50sp"
+            android:layout_below="@+id/cylinder"
+            android:gravity="center|left"
+            android:text="Fuel Type"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fuel_type_content"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@+id/cylinder"
+            android:layout_toRightOf="@id/fuel_type"
+            android:gravity="center"
+            android:text="Equipment"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/horse_power"
+            android:layout_width="150sp"
+            android:layout_height="45sp"
+            android:layout_below="@+id/fuel_type"
+            android:gravity="center|left"
+            android:text="Horse Power"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/horse_power_content"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:layout_below="@+id/fuel_type"
+            android:layout_toRightOf="@id/horse_power"
+            android:gravity="center"
+            android:text="Equipment"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/torque"
+            android:layout_width="150sp"
+            android:layout_height="45sp"
+            android:layout_below="@+id/horse_power"
+            android:gravity="center|left"
+            android:text="Torque"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/torque_content"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:layout_below="@+id/horse_power"
+            android:layout_toRightOf="@id/torque"
+            android:gravity="center"
+            android:text="Equipment"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="150sp"
+            android:layout_height="45sp"
+            android:layout_below="@+id/torque"
+            android:gravity="center|left"
+            android:text="Type"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/type_content"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:layout_below="@+id/torque"
+            android:layout_toRightOf="@id/type"
+            android:gravity="center"
+            android:text="Equipment"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/compressorType"
+            android:layout_width="150sp"
+            android:layout_height="45sp"
+            android:layout_below="@+id/type"
+            android:gravity="center|left"
+            android:text="Compressor Type"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/compressorType_content"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:layout_below="@+id/type"
+            android:layout_toRightOf="@id/compressorType"
+            android:gravity="center"
+            android:text="Equipment"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

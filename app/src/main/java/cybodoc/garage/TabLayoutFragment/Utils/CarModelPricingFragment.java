@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cybodoc.carpurchase.R;
+import cybodoc.garage.Api.UserApi;
 
 
 /**
@@ -27,5 +28,10 @@ public class CarModelPricingFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        callApi();
+    }
+    private void callApi() {
+        UserApi userApi = new UserApi(getContext());
+        userApi.getPriceDetails( getView());
     }
 }

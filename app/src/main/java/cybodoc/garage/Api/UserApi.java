@@ -13,9 +13,12 @@ import cybodoc.garage.Adapter.CarBrandModelsAdapter;
 import cybodoc.garage.Adapter.CarBrandsAdapter;
 import cybodoc.garage.Adapter.CarStylesAdapter;
 import cybodoc.garage.Adapter.GalleryAdapter;
+import cybodoc.garage.Adapter.PriceResponse;
+import cybodoc.garage.Adapter.SpecsAdapter;
 import cybodoc.garage.ModelClass.CarBrands;
 import cybodoc.garage.ModelClass.GalleryResponse;
 import cybodoc.garage.ModelClass.Make;
+import cybodoc.garage.ModelClass.SpecsResponse;
 import cybodoc.garage.ModelClass.StyleModelRootClass;
 import cybodoc.garage.Utils.Constants;
 import cybodoc.garage.Utils.SharedPreference;
@@ -199,4 +202,71 @@ public String key= Constants.API_KEY;
         });
 
     }
+    public void getSpecDetails(final RecyclerView recyclerView, final int resId, final View view) {
+        final ProgressDialog progressDialog= utils.showProgressDialog(context);
+        progressDialog.show();
+        Call<SpecsResponse> call = webservice.getSpecsDetails(SharedPreference.getStyleId(context), "json", key);
+        call.enqueue(new Callback<SpecsResponse>() {
+            @Override
+            public void onResponse(Call<SpecsResponse> call, Response<SpecsResponse> response) {
+                if (response.body()==null) {
+                    progressDialog.cancel();
+                    //EventBus.getDefault().postSticky(response.body());
+                    recyclerView.setVisibility(View.INVISIBLE);
+                    TextView emptyView=(TextView)view.findViewById(R.id.empty_view);
+                    emptyView.setVisibility(View.VISIBLE);
+                } else {
+                    if(response.body().getEnginesCount()==0)
+                    {
+                        progressDialog.cancel();
+                        //EventBus.getDefault().postSticky(response.body());
+                        recyclerView.setVisibility(View.INVISIBLE);
+                        TextView emptyView=(TextView)view.findViewById(R.id.empty_view);
+                        emptyView.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        progressDialog.cancel();
+                        TextView emptyView = (TextView) view.findViewById(R.id.empty_view);
+                        emptyView.setVisibility(View.INVISIBLE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        //EventBus.getDefault().postSticky(response.body().getResult());
+                        recyclerView.setAdapter(new SpecsAdapter(response.body().getEngines(), resId, context));
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<SpecsResponse> call, Throwable t) {
+                progressDialog.cancel();
+            }
+        });
+
+    }
+    public void getPriceDetails( final View view) {
+        final ProgressDialog progressDialog= utils.showProgressDialog(context);
+        progressDialog.show();
+        Call<PriceResponse> call = webservice.getPrice(SharedPreference.getStyleId(context), "json", key);
+       call.enqueue(new Callback<PriceResponse>() {
+           @Override
+           public void onResponse(Call<PriceResponse> call, Response<PriceResponse> response) {
+               if(response.body()==null)
+               {
+                   progressDialog.cancel();
+               }
+               else {
+                   progressDialog.cancel();
+                   TextView price=(TextView)view.findViewById(R.id.price);
+                   price.setText("$"+response.body().getValue());
+               }
+           }
+
+           @Override
+           public void onFailure(Call<PriceResponse> call, Throwable t) {
+               progressDialog.cancel();
+           }
+       });
+
+    }
+
 }
