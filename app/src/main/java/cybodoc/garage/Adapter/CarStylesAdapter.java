@@ -3,7 +3,9 @@ package cybodoc.garage.Adapter;
 /**
  * Created by pratheesh on 12-09-2016.
  */
+
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,9 @@ import android.widget.TextView;
 import java.util.List;
 
 import cybodoc.carpurchase.R;
+import cybodoc.garage.Activity.CarModelDescriptionActivity;
 import cybodoc.garage.ModelClass.Style;
+import cybodoc.garage.Utils.SharedPreference;
 
 
 public class CarStylesAdapter extends RecyclerView.Adapter<CarStylesAdapter.DetailsViewHolder> {
@@ -44,17 +48,17 @@ public class CarStylesAdapter extends RecyclerView.Adapter<CarStylesAdapter.Deta
 
 
 
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v){
-//                SharedPreference.setModelNiceName(context,styles.get(position).getNiceName());
-//                Intent intent= new Intent(v.getContext(),StylesActivity.class);
-////                intent.putExtra("NoOfModels",makes.get(position).getModels().size());
-////                intent.putExtra("BrandName",makes.get(position).getName());
-//                v.getContext().startActivity(intent);
-//
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                SharedPreference.setStyleId(context, styles.get(position).getId());
+                Intent intent= new Intent(v.getContext(),CarModelDescriptionActivity.class);
+              intent.putExtra("ModelId",styles.get(position).getSubmodel().getModelName());
+//                intent.putExtra("BrandName",makes.get(position).getName());
+                v.getContext().startActivity(intent);
+
+            }
+        });
 
 
     }

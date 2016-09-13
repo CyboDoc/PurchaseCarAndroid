@@ -34,6 +34,11 @@ public class Style
 
     @SerializedName("make")
     public StyleMake make;
+
+    public int getId() {
+        return id;
+    }
+
     @SerializedName("model")
     public StyleModel model;
     @SerializedName("id")

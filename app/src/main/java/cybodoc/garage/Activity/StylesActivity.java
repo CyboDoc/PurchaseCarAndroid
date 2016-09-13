@@ -8,7 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -21,7 +22,7 @@ public Spinner spinner;
     public RecyclerView recyclerView;
     public Snackbar snackbar;
     public int year;
-    public Button Submit;
+    public ImageButton Submit;
     public String ModelId,MakeId;
     public TextView Model,Make;
     @Override
@@ -47,7 +48,12 @@ public Spinner spinner;
         });
 
         spinner=(Spinner)findViewById(R.id.spinner_year);
-        Submit=(Button)findViewById(R.id.Style_submit);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spinner_item,R.layout.spinner_layout);
+        spinner.setAdapter(adapter);
+        adapter.setDropDownViewResource(R.layout.spinner_drop_down_layout);
+        Submit=(ImageButton)findViewById(R.id.Style_submit);
         recyclerView = (RecyclerView)findViewById(R.id.style_recycler);
         //layoutManager = new LinearLayoutManager(getApplicationContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
