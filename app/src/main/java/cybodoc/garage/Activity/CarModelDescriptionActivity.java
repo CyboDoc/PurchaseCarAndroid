@@ -37,7 +37,7 @@ public String modelId;
             }
         });
         final TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("SPECS & FEATURES"));
+        tabLayout.addTab(tabLayout.newTab().setText("FEATURES"));
         tabLayout.addTab(tabLayout.newTab().setText("GALLERY"));
         tabLayout.addTab(tabLayout.newTab().setText("REVIEWS"));
         tabLayout.addTab(tabLayout.newTab().setText("PRICING"));

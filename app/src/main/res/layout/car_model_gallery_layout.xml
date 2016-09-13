@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="23sp"
-        android:textColor="#316887"
+        android:textColor="@color/colorPrimary"
         android:text="Sorry! No results"
         android:visibility="gone" />
 

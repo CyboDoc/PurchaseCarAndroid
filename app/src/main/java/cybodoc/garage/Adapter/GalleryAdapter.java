@@ -45,7 +45,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.DetailsV
 
        Picasso.with(context)
                .load("https://media.ed.edmunds-media.com" + images.get(position).getPhotoSrcs().get(2))
-                .resize(600, 600)
+                .resize(800, 800)
                 .into(holder.imageView);
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override

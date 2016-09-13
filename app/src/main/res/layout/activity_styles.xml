@@ -42,6 +42,9 @@
         android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/style_recycler"
+        android:scrollbars="horizontal"
+        android:scrollbarStyle="insideInset"
+        android:fadeScrollbars="true"
         android:layout_below="@id/Style_submit"
         android:orientation="horizontal"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
@@ -53,7 +56,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="23sp"
-            android:textColor="#316887"
+            android:textColor="@color/colorPrimary"
             android:text="Sorry! No results"
             android:visibility="gone" />
 

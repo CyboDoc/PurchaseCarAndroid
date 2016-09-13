@@ -4,15 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <TextView
             android:id="@+id/price"
-            android:text="$"
             android:textSize="35sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="250sp" />
+    <ImageView
+        android:layout_below="@+id/price"
+        android:src="@drawable/cart"
+        android:id="@+id/cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
