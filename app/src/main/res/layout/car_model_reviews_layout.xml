@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+   <TextView
+       android:id="@+id/pros"
+       android:text="hekko"
+       android:layout_width="wrap_content"
+       android:layout_height="20dp" />
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="REVIEWS"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
-</LinearLayout>
+        android:layout_below="@+id/pros"
+        android:id="@+id/cons"
+        android:text="hekko"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+    <TextView
+        android:layout_below="@+id/cons"
+        android:id="@+id/body"
+        android:text="hekko"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+    <TextView
+        android:layout_below="@+id/body"
+        android:id="@+id/safety"
+        android:text="hekko"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+    <TextView
+        android:layout_below="@+id/safety"
+        android:id="@+id/whatsnew"
+        android:text="hekko"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+
+
+
+
+
+
+</RelativeLayout>

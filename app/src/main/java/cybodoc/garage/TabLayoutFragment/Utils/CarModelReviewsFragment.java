@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import cybodoc.carpurchase.R;
+import cybodoc.garage.Api.UserApi;
 
 
 /**
@@ -27,5 +29,18 @@ public class CarModelReviewsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        TextView pros,cons,body,whatsnew,safety;
+        pros=(TextView)getView().findViewById(R.id.pros);
+        cons=(TextView)getView().findViewById(R.id.cons);
+        body=(TextView)getView().findViewById(R.id.body);
+        whatsnew=(TextView)getView().findViewById(R.id.whatsnew);
+        safety=(TextView)getView().findViewById(R.id.safety);
+
+        UserApi userApi=new UserApi(getContext());
+        userApi.ListCarReviews(getView());
+
+
+
+
     }
 }
