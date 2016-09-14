@@ -29,12 +29,22 @@ public class SharedPreference {
     }
     public static int getStyleId(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-        return sharedPreferences.getInt(Constants.STYLE_ID,0);
+        return sharedPreferences.getInt(Constants.STYLE_ID, 0);
     }
     public static void setStyleId(Context context,int styleId) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(Constants.STYLE_ID,styleId);
+        editor.putInt(Constants.STYLE_ID, styleId);
+        editor.apply();
+    }
+    public static int getYear(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(Constants.YEAR,0);
+    }
+    public static void setYear(Context context,int year) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(Constants.YEAR,year);
         editor.apply();
     }
 }

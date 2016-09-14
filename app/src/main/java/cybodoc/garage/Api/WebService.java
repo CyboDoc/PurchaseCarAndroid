@@ -13,6 +13,8 @@ import cybodoc.garage.ModelClass.GalleryResponse;
 import cybodoc.garage.ModelClass.Make;
 import cybodoc.garage.ModelClass.SpecsResponse;
 import cybodoc.garage.ModelClass.StyleModelRootClass;
+import cybodoc.garage.ModelClass.Editorial;
+import cybodoc.garage.ModelClass.RootObject;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -22,8 +24,7 @@ import retrofit2.http.Query;
  * Created by pratheesh on 28-08-2016.
  */
 public interface WebService {
-//    https://api.edmunds.com/v1/api/tco/newtotalcashpricebystyleidandzip/101426944/90019?fmt=json&api_key={api key}
-
+    //https://api.edmunds.com/api/vehicle/v2/audi?state=used&view=basic&fmt=json&api_key=svddd53q99xzb75uetqf7dbh
     @GET("/api/vehicle/v2/makes")
     Call<CarBrands> getCarBrands(@Query("state") String state, @Query("view") String view, @Query("fmt") String fmt, @Query("api_key") String key);
 
@@ -40,5 +41,8 @@ public interface WebService {
     Call<PriceResponse> getPrice(@Path("styleId")int styleId,@Query("fmt") String fmt, @Query("api_key") String key);
     @GET("/api/vehicle/v2/styles/{styleId}/engines")
     Call<SpecsResponse> getSpecsDetails(@Path("styleId")int styleId, @Query("fmt") String fmt, @Query("api_key") String key);
+    @GET("/v1/content/editorreviews")
+    Call<RootObject> getCarReviews(@Query("make") String make, @Query("model") String model, @Query("year") String year, @Query("fmt") String fmt, @Query("api_key") String key );
+
 }
 

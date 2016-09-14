@@ -12,4 +12,5 @@ public class Constants {
     public static final String MAKE_NICE_NAME ="makeNiceName" ;
     public static final String MODEL_NICE_NAME ="modelNiceName" ;
     public static final String STYLE_ID ="styleId" ;
+    public static final String YEAR ="year" ;
 }

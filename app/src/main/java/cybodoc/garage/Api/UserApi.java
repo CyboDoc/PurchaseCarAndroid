@@ -18,6 +18,7 @@ import cybodoc.garage.Adapter.SpecsAdapter;
 import cybodoc.garage.ModelClass.CarBrands;
 import cybodoc.garage.ModelClass.GalleryResponse;
 import cybodoc.garage.ModelClass.Make;
+import cybodoc.garage.ModelClass.RootObject;
 import cybodoc.garage.ModelClass.SpecsResponse;
 import cybodoc.garage.ModelClass.StyleModelRootClass;
 import cybodoc.garage.Utils.Constants;
@@ -146,7 +147,7 @@ public String key= Constants.API_KEY;
                     }
                     else {
                         progressDialog.cancel();
-                        nos.setText("Styles ("+String.valueOf(response.body().stylesCount)+")");
+                        nos.setText("Styles (" + String.valueOf(response.body().stylesCount) + ")");
                         TextView emptyView = (TextView) view.findViewById(R.id.empty_view);
                         emptyView.setVisibility(View.INVISIBLE);
                         recyclerView.setVisibility(View.VISIBLE);
@@ -271,5 +272,57 @@ public String key= Constants.API_KEY;
        });
 
     }
+
+
+    public void ListCarReviews(final  View view)
+    { final ProgressDialog progressDialog= utils.showProgressDialog(context);
+        progressDialog.show();
+        Call<RootObject> call=webservice.getCarReviews(SharedPreference.getMakeNiceName(context),SharedPreference.getModelNiceName(context),String.valueOf(SharedPreference.getYear(context)),"json",key);
+        call.enqueue(new Callback<RootObject>() {
+            @Override
+            public void onResponse(Call<RootObject> call, Response<RootObject> response) {
+
+                if(response.body()==null){
+                progressDialog.cancel();
+                    TextView emptyView=(TextView)view.findViewById(R.id.empty_view);
+                    emptyView.setVisibility(View.VISIBLE);
+                }
+
+                else
+                {
+                    if(response.body().getEditorial()!=null) {
+                        progressDialog.cancel();
+                        TextView emptyView=(TextView)view.findViewById(R.id.empty_view);
+                        emptyView.setVisibility(View.INVISIBLE);
+                        TextView pros = (TextView) view.findViewById(R.id.pros);
+                        TextView cons = (TextView) view.findViewById(R.id.cons);
+                        TextView body = (TextView) view.findViewById(R.id.body);
+                        TextView safety = (TextView) view.findViewById(R.id.safety);
+                        TextView whatsnew = (TextView) view.findViewById(R.id.whatsnew);
+                        pros.setText(response.body().getEditorial().getPro());
+                        cons.setText(response.body().getEditorial().getCon());
+                        body.setText(response.body().getEditorial().getBody());
+                        safety.setText(response.body().getEditorial().getSafety());
+                        whatsnew.setText(response.body().getEditorial().getWhatsNew());
+                    }
+                    else
+                    {
+                        TextView emptyView=(TextView)view.findViewById(R.id.empty_view);
+                        emptyView.setVisibility(View.VISIBLE);
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<RootObject> call, Throwable t) {
+
+
+            }
+        });
+    }
+
 
 }

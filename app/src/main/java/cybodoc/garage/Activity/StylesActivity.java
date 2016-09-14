@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import cybodoc.carpurchase.R;
 import cybodoc.garage.Api.UserApi;
+import cybodoc.garage.Utils.SharedPreference;
 import cybodoc.garage.Utils.utils;
 
 public class StylesActivity extends AppCompatActivity {
@@ -63,11 +64,13 @@ public Spinner spinner;
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         year=Integer.parseInt(spinner.getSelectedItem().toString());
-        checkConnection(getApplicationContext(),getWindow().getDecorView().getRootView());
+        SharedPreference.setYear(getApplicationContext(),year);
+        checkConnection(getApplicationContext(), getWindow().getDecorView().getRootView());
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                year=Integer.parseInt(spinner.getSelectedItem().toString());
+                year = Integer.parseInt(spinner.getSelectedItem().toString());
+                SharedPreference.setYear(getApplicationContext(),year);
                 callApi();
             }
         });
