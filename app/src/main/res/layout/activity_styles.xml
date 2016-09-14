@@ -33,7 +33,16 @@
         android:id="@+id/seperator"
         android:layout_below="@id/style_relative"
         android:layout_width="match_parent"
-        android:layout_height="50sp"></LinearLayout>
+        android:layout_height="50sp">
+        <TextView
+            android:id="@+id/no_of_styles"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="normal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
     <FrameLayout
         android:id="@+id/frame"
         android:scrollbars="horizontal"

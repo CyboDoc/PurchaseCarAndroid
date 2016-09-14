@@ -42,7 +42,7 @@ public class CarBrandModelsAdapter extends RecyclerView.Adapter<CarBrandModelsAd
 
     @Override
     public void onBindViewHolder(DetailsViewHolder holder, final int position) {
-        holder.brandName.setText(models.get(position).getNiceName());
+        holder.brandName.setText(models.get(position).getNiceName().toUpperCase());
 
 
 //        Picasso.with(context)

@@ -45,7 +45,7 @@ public class CarStylesAdapter extends RecyclerView.Adapter<CarStylesAdapter.Deta
         holder.modelName.setText(styles.get(position).getSubmodel().getModelName());
         holder.styleName.setText(styles.get(position).getName());
         holder.trim.setText(styles.get(position).getTrim());
-
+        holder.no.setText(String.valueOf(position+1));
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -71,13 +71,13 @@ public class CarStylesAdapter extends RecyclerView.Adapter<CarStylesAdapter.Deta
 
     public static class DetailsViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView modelName,styleName,trim;
+        private TextView modelName,styleName,trim,no;
         public DetailsViewHolder(View itemview) {
             super(itemview);
             modelName = (TextView) itemview.findViewById(R.id.style_model_name);
             styleName = (TextView) itemview.findViewById(R.id.style_name);
             trim= (TextView) itemview.findViewById(R.id.trim_content);
-
+            no=(TextView)itemview.findViewById(R.id.no);
 
         }
     }

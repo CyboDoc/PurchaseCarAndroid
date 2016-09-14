@@ -123,6 +123,7 @@ public String key= Constants.API_KEY;
     public void ListCarBrandModelStyles(int year,final RecyclerView recyclerView, final int resId, final View view) {
         final ProgressDialog progressDialog= utils.showProgressDialog(context);
         progressDialog.show();
+        final TextView nos=(TextView)view.findViewById(R.id.no_of_styles);
         Call<StyleModelRootClass> call = webservice.getCarModelStyles(SharedPreference.getMakeNiceName(context), SharedPreference.getModelNiceName(context), year, "json", key);
         call.enqueue(new Callback<StyleModelRootClass>() {
             @Override
@@ -137,6 +138,7 @@ public String key= Constants.API_KEY;
                     if(response.body().stylesCount==0)
                     {
                         progressDialog.cancel();
+                        nos.setText("Styles (" + String.valueOf(response.body().stylesCount) + ")");
                         //EventBus.getDefault().postSticky(response.body());
                         recyclerView.setVisibility(View.INVISIBLE);
                         TextView emptyView=(TextView)view.findViewById(R.id.empty_view);
@@ -144,6 +146,7 @@ public String key= Constants.API_KEY;
                     }
                     else {
                         progressDialog.cancel();
+                        nos.setText("Styles ("+String.valueOf(response.body().stylesCount)+")");
                         TextView emptyView = (TextView) view.findViewById(R.id.empty_view);
                         emptyView.setVisibility(View.INVISIBLE);
                         recyclerView.setVisibility(View.VISIBLE);

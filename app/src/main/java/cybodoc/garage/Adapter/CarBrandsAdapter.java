@@ -42,7 +42,7 @@ public class CarBrandsAdapter extends RecyclerView.Adapter<CarBrandsAdapter.Deta
 
     @Override
     public void onBindViewHolder(DetailsViewHolder holder, final int position) {
-        holder.brandName.setText(makes.get(position).getName());
+        holder.brandName.setText(makes.get(position).getName().toUpperCase());
 
 //        Picasso.with(context)
 //                .load("http://" + events.get(position).getLink())
