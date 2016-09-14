@@ -1,5 +1,6 @@
 package cybodoc.garage.Activity;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -7,10 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import cybodoc.carpurchase.R;
 import cybodoc.garage.Api.UserApi;
+import cybodoc.garage.Utils.utils;
 
 public class ListCarBrandsActivity extends AppCompatActivity {
     public RecyclerView.LayoutManager layoutManager;
@@ -33,7 +36,7 @@ public class ListCarBrandsActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-     //   checkConnection(ListCarBrandsActivity.this,getWindow().getDecorView().getRootView().findViewById(R.id.coordinate_car_brands));
+       checkConnection(ListCarBrandsActivity.this, getWindow().getDecorView().getRootView());
 callApi();
 
     }
@@ -43,22 +46,22 @@ callApi();
         userApi.ListCarBrands(recyclerView, R.layout.brands_row_layout,getWindow().getDecorView().getRootView().findViewById(R.id.coordinate_car_brands));
     }
 
-//    private void checkConnection(final Context context,final View view) {
-//        if(utils.checkConnectivity(context)) {
-//            callApi();
-//        }
-//        else
-//        {
-//            snackbar= utils.showSnackBar(view);
-//            snackbar.setAction("Try Again", new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    checkConnection(context,view);
-//
-//                }
-//            }).show();
-//        }
-//    }
+    private void checkConnection(final Context context,final View view) {
+        if(utils.checkConnectivity(context)) {
+            callApi();
+        }
+        else
+        {
+            snackbar= utils.showSnackBar(view);
+            snackbar.setAction("Try Again", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    checkConnection(context,view);
+
+                }
+            }).show();
+        }
+    }
 
 }
 

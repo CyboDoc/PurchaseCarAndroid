@@ -1,7 +1,9 @@
 package cybodoc.garage.TabLayoutFragment.Utils;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +11,14 @@ import android.view.ViewGroup;
 
 import cybodoc.carpurchase.R;
 import cybodoc.garage.Api.UserApi;
+import cybodoc.garage.Utils.utils;
 
 
 /**
  * Created by pratheesh on 10-09-2016.
  */
 public class CarModelPricingFragment extends Fragment {
+    public Snackbar snackbar;
     public CarModelPricingFragment() {
     }
 
@@ -28,10 +32,26 @@ public class CarModelPricingFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        callApi();
+        checkConnection(getContext(), view.getRootView().findViewById(R.id.coordinate_description));
     }
     private void callApi() {
         UserApi userApi = new UserApi(getContext());
-        userApi.getPriceDetails( getView());
+        userApi.getPriceDetails(getView());
+    }
+    private void checkConnection(final Context context,final View view) {
+        if(utils.checkConnectivity(context)) {
+            callApi();
+        }
+        else
+        {
+            snackbar=utils.showSnackBar(view);
+            snackbar.setAction("Try Again", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    checkConnection(context,view);
+
+                }
+            }).show();
+        }
     }
 }

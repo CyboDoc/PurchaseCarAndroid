@@ -1,5 +1,6 @@
 package cybodoc.garage.TabLayoutFragment.Utils;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import cybodoc.carpurchase.R;
 import cybodoc.garage.Api.UserApi;
+import cybodoc.garage.Utils.utils;
 
 
 /**
@@ -38,10 +40,27 @@ public class CarModelGalleryFragment extends Fragment{
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-callApi();
+        checkConnection(getContext(),view.getRootView().findViewById(R.id.coordinate_description));
     }
     private void callApi() {
         UserApi userApi = new UserApi(getContext());
-        userApi.getImages(recyclerView, R.layout.gallery_row_layout,getView());
+        userApi.getImages(recyclerView, R.layout.gallery_row_layout, getView());
     }
+    private void checkConnection(final Context context,final View view) {
+        if(utils.checkConnectivity(context)) {
+            callApi();
+        }
+        else
+        {
+            snackbar=utils.showSnackBar(view);
+            snackbar.setAction("Try Again", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    checkConnection(context,view);
+
+                }
+            }).show();
+        }
+    }
+
 }

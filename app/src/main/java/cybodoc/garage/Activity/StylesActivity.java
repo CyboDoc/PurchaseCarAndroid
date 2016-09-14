@@ -1,5 +1,6 @@
 package cybodoc.garage.Activity;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import cybodoc.carpurchase.R;
 import cybodoc.garage.Api.UserApi;
+import cybodoc.garage.Utils.utils;
 
 public class StylesActivity extends AppCompatActivity {
 public Spinner spinner;
@@ -61,7 +63,7 @@ public Spinner spinner;
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         year=Integer.parseInt(spinner.getSelectedItem().toString());
-        callApi();
+        checkConnection(getApplicationContext(),getWindow().getDecorView().getRootView());
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,5 +75,21 @@ public Spinner spinner;
     private void callApi() {
         UserApi userApi = new UserApi(this);
         userApi.ListCarBrandModelStyles(year,recyclerView, R.layout.style_row_layout, getWindow().getDecorView().getRootView());
+    }
+    private void checkConnection(final Context context,final View view) {
+        if(utils.checkConnectivity(context)) {
+            callApi();
+        }
+        else
+        {
+            snackbar=utils.showSnackBar(view);
+            snackbar.setAction("Try Again", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    checkConnection(context,view);
+
+                }
+            }).show();
+        }
     }
 }

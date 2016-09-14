@@ -1,5 +1,6 @@
 package cybodoc.garage.Activity;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import cybodoc.carpurchase.R;
 import cybodoc.garage.Api.UserApi;
+import cybodoc.garage.Utils.utils;
 
 public class CarBrandModelsActivity extends AppCompatActivity {
     public RecyclerView.LayoutManager layoutManager;
@@ -49,12 +51,29 @@ public class CarBrandModelsActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-       callApi();
+       checkConnection(getApplicationContext(),getWindow().getDecorView().getRootView());
     }
 
     private void callApi() {
         UserApi userApi = new UserApi(this);
         userApi.ListCarBrandModels(brandNiceName, recyclerView, R.layout.brands_row_layout,getWindow().getDecorView().getRootView().findViewById(R.id.coordinate_car_brand_models));
     }
+    private void checkConnection(final Context context,final View view) {
+        if(utils.checkConnectivity(context)) {
+            callApi();
+        }
+        else
+        {
+            snackbar= utils.showSnackBar(view);
+            snackbar.setAction("Try Again", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    checkConnection(context,view);
+
+                }
+            }).show();
+        }
+    }
+
 
 }
